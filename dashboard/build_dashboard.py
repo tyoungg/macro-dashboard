@@ -17,6 +17,7 @@ from indicators.credit_spread import get_credit_spread
 from indicators.bank_stress import get_bank_stress
 from indicators.mortgage_30y import get_mortgage_30y
 from indicators.equity_breadth import get_equity_breadth
+from indicators.gold import get_gold_signal
 
 from dashboard.regime import classify, get_regime_emoji
 from dashboard.signals import get_signal_color
@@ -36,12 +37,11 @@ def main():
         get_credit_spread(),
         get_bank_stress(),
         get_mortgage_30y(),
-        get_equity_breadth()
+        get_equity_breadth(),
+        get_gold_signal()
     ]
 
-    # Convert list to dict for classification logic if it expects indicator names as keys
-    # dashboard/regime.py expects: { 'indicator_name': (value, signal, explanation), ... }
-    # Let's adjust regime.py or adapt here.
+    # Convert list to dict for classification logic
     signals_dict = {
         res['indicator']: (res.get('value', 0), res['signal'], res['explanation'])
         for res in indicator_results
@@ -86,8 +86,8 @@ def main():
     print("Generating charts...")
     plt.figure(figsize=(10, 6))
     counts = results_df['signal'].value_counts()
-    color_map = {"🟢": "green", "🔴": "red", "🟡": "yellow"}
-    plt.bar(counts.index, counts.values, color=[color_map.get(get_signal_color(s), "gray") for s in counts.index])
+    color_map = {"Bullish": "green", "Bearish": "red", "Neutral": "yellow"}
+    plt.bar(counts.index, counts.values, color=[color_map.get(s, "gray") for s in counts.index])
     plt.title(f"Macro Signals Distribution - {datetime.now().strftime('%Y-%m-%d')}")
     plt.ylabel("Count")
     plt.savefig("charts/signal_distribution.png")

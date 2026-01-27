@@ -36,14 +36,19 @@ The output will be generated in `docs/`, `reports/`, and `charts/`.
 │   ├── processed/           # Cleaned indicators
 │   └── history/             # Regime logs
 ├── indicators/
-│   ├── rates.py             # 10Y Yield, Term Premium, 2s10s
-│   ├── liquidity.py         # Fed Balance Sheet, Bank Reserves
-│   ├── credit.py            # HY OAS, Treasury Auctions
-│   ├── housing.py           # 30Y Mortgage Rate
-│   └── equities.py          # Equity Breadth, Bank Stress
+│   ├── yield_10y.py         # 10Y Yield
+│   ├── term_premium.py      # 10Y Term Premium
+│   ├── yield_curve.py       # 2s10s Curve
+│   ├── fed_balance_sheet.py # Liquidity Trend
+│   ├── bank_reserves.py     # Reserve Trend
+│   ├── treasury_auctions.py # Auction Quality
+│   ├── credit_spread.py     # HY OAS
+│   ├── bank_stress.py       # Regional Bank Performance
+│   ├── mortgage_30y.py      # Housing Rates
+│   ├── equity_breadth.py    # S&P 500 Participation
+│   └── gold.py              # Gold vs Real Rates
 ├── dashboard/
 │   ├── build_dashboard.py   # Orchestrates everything
-│   ├── data_loader.py       # Data fetching logic
 │   ├── signals.py           # Signal mapping
 │   └── regime.py            # Regime classification logic
 ├── charts/
@@ -70,10 +75,13 @@ The output will be generated in `docs/`, `reports/`, and `charts/`.
 8. **Bank Stress**: KRE vs SPY 1-month relative performance
 9. **30Y Mortgage Rate**: 3-month change (±30 bps)
 10. **Equity Breadth**: % of S&P 500 stocks above 200DMA
+11. **Gold vs Real Rates**: Gold price vs 10Y Real Yield (Bullish if Gold ↑ and Real Yield ↓)
 
 ## Regimes
 
 - 🟢 **EASING / RISK-ON**: ≥5 bullish signals
 - 🟡 **TRANSITION**: No dominant cluster
 - 🔴 **TIGHT / FRAGILE**: ≥5 bearish signals
-- ⚠️ **PRE-STRESS**: ≥3 bearish signals including credit or banks
+- ⚠️ **PRE-STRESS**:
+    - ≥3 bearish signals including credit or banks
+    - OR **Gold is Bullish while Credit is Neutral-to-Bearish** (Credibility Warning)

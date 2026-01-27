@@ -19,23 +19,23 @@ def test_logic():
     assert classify(signals_bear) == "TIGHT / FRAGILE"
     print("✅ Bearish classification passed")
 
-    # Test Pre-Stress
+    # Test Pre-Stress (Standard)
     signals_pre = {
         'High Yield Credit Spread': (0, 'Bearish', ''),
         'I2': (0, 'Bearish', ''),
         'I3': (0, 'Bearish', '')
     }
     assert classify(signals_pre) == "PRE-STRESS"
-    print("✅ Pre-Stress (Credit) classification passed")
+    print("✅ Pre-Stress (Standard) classification passed")
 
-    # Test Pre-Stress Bank
-    signals_pre_bank = {
-        'Bank Stress': (0, 'Bearish', ''),
-        'I2': (0, 'Bearish', ''),
-        'I3': (0, 'Bearish', '')
+    # Test Pre-Stress Gold Veto
+    signals_gold_veto = {
+        'Gold vs Real Rates': (0, 'Bullish', ''),
+        'High Yield Credit Spread': (0, 'Neutral', ''),
+        'Treasury Auctions': (0, 'Neutral', '')
     }
-    assert classify(signals_pre_bank) == "PRE-STRESS"
-    print("✅ Pre-Stress (Bank) classification passed")
+    assert classify(signals_gold_veto) == "PRE-STRESS"
+    print("✅ Pre-Stress (Gold Veto) classification passed")
 
     # Test Transition
     signals_trans = {'I1': (0, 'Bullish', ''), 'I2': (0, 'Bearish', '')}
