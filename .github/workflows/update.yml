@@ -32,6 +32,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          # Add all relevant artifacts including history and docs
           git add data/history/ charts/ reports/ docs/
           git commit -m "Auto-update macro dashboard: $(date +'%Y-%m-%d')" || echo "No changes to commit"
           git push

@@ -3,7 +3,8 @@
 An automated macro-economic regime tracking dashboard.
 
 ## Dashboard Access
-- **Web Dashboard**: [docs/index.html](docs/index.html) (Viewable via GitHub Pages if enabled)
+- **Web Dashboard**: [docs/index.html](docs/index.html) (Current Status)
+- **Historical Trends**: [docs/history.html](docs/history.html) (Time-series charts)
 - **Latest Report**: [reports/latest.md](reports/latest.md)
 
 ## How to Run
@@ -34,7 +35,7 @@ The output will be generated in `docs/`, `reports/`, and `charts/`.
 ├── data/
 │   ├── raw/                 # Pulled data (CSV)
 │   ├── processed/           # Cleaned indicators
-│   └── history/             # Regime logs
+│   └── history/             # Regime and indicator logs
 ├── indicators/
 │   ├── yield_10y.py         # 10Y Yield
 │   ├── term_premium.py      # 10Y Term Premium
@@ -52,9 +53,11 @@ The output will be generated in `docs/`, `reports/`, and `charts/`.
 │   ├── signals.py           # Signal mapping
 │   └── regime.py            # Regime classification logic
 ├── charts/
-│   └── *.png                # Visualizations
+│   ├── signal_distribution.png
+│   └── history/*.png        # Trend lines for each indicator
 ├── docs/
-│   └── index.html           # Static HTML dashboard
+│   ├── index.html           # Main dashboard
+│   └── history.html         # Historical trends page
 ├── reports/
 │   └── latest.md            # Auto-updated summary
 ├── .github/workflows/
