@@ -1,0 +1,158 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Macro Dashboard</title>
+        
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; }
+            nav { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+            nav a { margin-right: 20px; text-decoration: none; color: #0366d6; font-weight: bold; }
+            h1, h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
+            .regime { font-size: 2em; font-weight: bold; margin: 20px 0; padding: 20px; border-radius: 8px; text-align: center; }
+            .regime-EASING { background-color: #e6ffed; color: #22863a; border: 1px solid #34d058; }
+            .regime-TIGHT { background-color: #ffeef0; color: #cb2431; border: 1px solid #f97583; }
+            .regime-TRANSITION { background-color: #fffdef; color: #735c0f; border: 1px solid #ffea7f; }
+            .regime-PRE-STRESS { background-color: #fff5f5; color: #d73a49; border: 2px dashed #cb2431; }
+            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+            th, td { text-align: left; padding: 12px; border-bottom: 1px solid #eee; }
+            th { background-color: #f6f8fa; }
+            .signal-Bullish { color: #22863a; font-weight: bold; }
+            .signal-Bearish { color: #cb2431; font-weight: bold; }
+            .signal-Neutral { color: #735c0f; font-weight: bold; }
+            img { max-width: 100%; height: auto; margin: 20px 0; border: 1px solid #eee; }
+            .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 20px; }
+            .card { border: 1px solid #eee; border-radius: 8px; padding: 10px; background: #fff; }
+            footer { margin-top: 50px; font-size: 0.8em; color: #666; text-align: center; }
+        </style>
+    
+    </head>
+    <body>
+        
+        <nav>
+            <a href="index.html">Current Status</a>
+            <a href="history.html">Historical Trends</a>
+        </nav>
+    
+        <h1>Macro Dashboard</h1>
+        <p>Dashboard Updated: 2026-01-27 15:25:07 UTC</p>
+
+        <div class="regime regime-PRE-STRESS">
+            Current Regime: PRE-STRESS ⚠️
+        </div>
+
+        <h2>Current Indicators</h2>
+        <table>
+            <thead>
+                <tr><th>Indicator</th><th>Value</th><th>Signal</th><th>Explanation</th><th>Data Date</th><th>Source</th></tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td>10Y Treasury Yield</td>
+                    <td>4.24</td>
+                    <td class="signal-Bearish">🔴 Bearish</td>
+                    <td>Rates up 27.0bps over 3m, tightening pressure</td>
+                    <td>2026-01-23</td>
+                    <td>FRED</td>
+                </tr>
+        
+                <tr>
+                    <td>10Y Term Premium</td>
+                    <td>0.60</td>
+                    <td class="signal-Bearish">🔴 Bearish</td>
+                    <td>Elevated term premium (0.60%): investors demanding credibility compensation</td>
+                    <td>2026-01-16</td>
+                    <td>NY Fed ACM via FRED</td>
+                </tr>
+        
+                <tr>
+                    <td>2s10s Yield Curve</td>
+                    <td>0.66</td>
+                    <td class="signal-Neutral">🟡 Neutral</td>
+                    <td>Curve at 0.66%, mixed or flattening signal</td>
+                    <td>2026-01-26</td>
+                    <td>FRED</td>
+                </tr>
+        
+                <tr>
+                    <td>Fed Balance Sheet</td>
+                    <td>6584580.00</td>
+                    <td class="signal-Bullish">🟢 Bullish</td>
+                    <td>Fed balance sheet expanding (+$3.3B over 4w)</td>
+                    <td>2026-01-21</td>
+                    <td>FRED</td>
+                </tr>
+        
+                <tr>
+                    <td>Bank Reserves</td>
+                    <td>2954903.00</td>
+                    <td class="signal-Neutral">🟡 Neutral</td>
+                    <td>Bank reserves stable ($-0.7B over 4w)</td>
+                    <td>2026-01-21</td>
+                    <td>FRED (WRESBAL)</td>
+                </tr>
+        
+                <tr>
+                    <td>Treasury Auctions</td>
+                    <td>2.33</td>
+                    <td class="signal-Bearish">🔴 Bearish</td>
+                    <td>Weak auctions: Avg BTC 2.33, max tail 6.4bps</td>
+                    <td>2026-01-22</td>
+                    <td>Treasury Fiscal Data</td>
+                </tr>
+        
+                <tr>
+                    <td>High Yield Credit Spread</td>
+                    <td>2.68</td>
+                    <td class="signal-Bullish">🟢 Bullish</td>
+                    <td>HY spreads tight (268 bps) and compressing</td>
+                    <td>2026-01-23</td>
+                    <td>FRED (ICE BofA)</td>
+                </tr>
+        
+                <tr>
+                    <td>Bank Stress</td>
+                    <td>1.89</td>
+                    <td class="signal-Bullish">🟢 Bullish</td>
+                    <td>Banks outperforming S&P 500 by 1.9%</td>
+                    <td>2026-01-27</td>
+                    <td>Yahoo Finance (KRE vs SPY)</td>
+                </tr>
+        
+                <tr>
+                    <td>30Y Mortgage Rate</td>
+                    <td>6.09</td>
+                    <td class="signal-Neutral">🟡 Neutral</td>
+                    <td>Mortgage rates stable (-8 bps over 3m)</td>
+                    <td>2026-01-22</td>
+                    <td>FRED (Freddie Mac)</td>
+                </tr>
+        
+                <tr>
+                    <td>Equity Breadth</td>
+                    <td>74.00</td>
+                    <td class="signal-Bullish">🟢 Bullish</td>
+                    <td>Broad participation: 74.0% of stocks above 200DMA</td>
+                    <td>2026-01-27</td>
+                    <td>S&P 500 (Scraped via Wikipedia/Yahoo)</td>
+                </tr>
+        
+                <tr>
+                    <td>Gold vs Real Rates</td>
+                    <td>5053.70</td>
+                    <td class="signal-Bullish">🟢 Bullish</td>
+                    <td>Gold rising (+11.6%) as real yields fall (-0.02%)</td>
+                    <td>2026-01-23</td>
+                    <td>Yahoo (Gold) / FRED (TIPS)</td>
+                </tr>
+        
+            </tbody>
+        </table>
+        <h2>Signal Distribution</h2>
+        <img src="signal_distribution.png" alt="Signal Distribution">
+        <footer><p>Auto-generated by Macro Dashboard Bot</p></footer>
+    </body></html>
+    
