@@ -13,7 +13,7 @@
 | Bank Reserves | 2879.0 | 🟡 Neutral | Bank reserves stable ($-0.5B over 4w) | FRED |
 | Treasury Auctions | 2.33 | 🔴 Bearish | Weak auctions: Avg BTC 2.33, max tail 6.4bps | Treasury Fiscal Data |
 | High Yield Credit Spread | 2.68 | 🟢 Bullish | HY spreads tight (268 bps) and compressing | FRED (ICE BofA) |
-| Bank Stress | 1.46 | 🟢 Bullish | Banks outperforming S&P 500 by 1.5% | Yahoo Finance (KRE vs SPY) |
+| Bank Stress | 1.77 | 🟢 Bullish | Banks outperforming S&P 500 by 1.8% | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 6.09 | 🟡 Neutral | Mortgage rates stable (-8 bps over 3m) | FRED (Freddie Mac) |
 | Equity Breadth | 74.0 | 🟢 Bullish | Broad participation: 74.0% of stocks above 200DMA | S&P 500 (Scraped via Wikipedia/Yahoo) |
 
