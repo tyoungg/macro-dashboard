@@ -13,10 +13,10 @@
 | Bank Reserves | 2954903.0 | 🟡 Neutral | Bank reserves stable ($-0.7B over 4w) | 2026-01-21 | FRED (WRESBAL) |
 | Treasury Auctions | 2.33 | 🔴 Bearish | Weak auctions: Avg BTC 2.33, max tail 6.4bps | 2026-01-22 | Treasury Fiscal Data |
 | High Yield Credit Spread | 2.69 | 🟢 Bullish | HY spreads tight (269 bps) and compressing | 2026-01-26 | FRED (ICE BofA) |
-| Bank Stress | 1.31 | 🟢 Bullish | Banks outperforming S&P 500 by 1.3% | 2026-01-27 | Yahoo Finance (KRE vs SPY) |
+| Bank Stress | 1.38 | 🟢 Bullish | Banks outperforming S&P 500 by 1.4% | 2026-01-27 | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 6.09 | 🟡 Neutral | Mortgage rates stable (-8 bps over 3m) | 2026-01-22 | FRED (Freddie Mac) |
 | Equity Breadth | 74.0 | 🟢 Bullish | Broad participation: 74.0% of stocks above 200DMA | 2026-01-27 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 5083.7 | 🟢 Bullish | Gold rising (+12.2%) as real yields fall (-0.02%) | 2026-01-23 | Yahoo (Gold) / FRED (TIPS) |
+| Gold vs Real Rates | 5088.7 | 🟢 Bullish | Gold rising (+12.4%) as real yields fall (-0.02%) | 2026-01-23 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
