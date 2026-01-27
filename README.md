@@ -65,17 +65,19 @@ The output will be generated in `docs/`, `reports/`, and `charts/`.
 
 ## Indicators and Thresholds
 
-1. **10Y Treasury Yield**: 3-month change (±25 bps)
-2. **10Y Term Premium**: Level (<0%, 0-0.5%, >0.5%)
-3. **2s10s Yield Curve**: Steepening source (Bull vs Bear steepener)
-4. **Fed Balance Sheet**: 4-week trend
-5. **Bank Reserves**: 4-week trend (±$50B)
-6. **Treasury Auctions**: Tail and Bid-to-Cover
-7. **High Yield Credit Spread**: Level and 1-month change
-8. **Bank Stress**: KRE vs SPY 1-month relative performance
-9. **30Y Mortgage Rate**: 3-month change (±30 bps)
-10. **Equity Breadth**: % of S&P 500 stocks above 200DMA
-11. **Gold vs Real Rates**: Gold price vs 10Y Real Yield (Bullish if Gold ↑ and Real Yield ↓)
+Each indicator is implemented in a dedicated file within the `indicators/` directory:
+
+1. **10Y Treasury Yield** (`yield_10y.py`): 3-month change (±25 bps)
+2. **10Y Term Premium** (`term_premium.py`): Level (<0%, 0-0.5%, >0.5%)
+3. **2s10s Yield Curve** (`yield_curve.py`): Steepening source (Bull vs Bear steepener)
+4. **Fed Balance Sheet** (`fed_balance_sheet.py`): 4-week trend
+5. **Bank Reserves** (`bank_reserves.py`): 4-week trend (±$50B)
+6. **Treasury Auctions** (`treasury_auctions.py`): Tail and Bid-to-Cover
+7. **High Yield Credit Spread** (`credit_spread.py`): Level and 1-month change
+8. **Bank Stress** (`bank_stress.py`): KRE vs SPY 1-month relative performance
+9. **30Y Mortgage Rate** (`mortgage_30y.py`): 3-month change (±30 bps)
+10. **Equity Breadth** (`equity_breadth.py`): % of S&P 500 stocks above 200DMA
+11. **Gold vs Real Rates** (`gold.py`): Gold price vs 10Y Real Yield (Bullish if Gold ↑ and Real Yield ↓)
 
 ## Regimes
 
