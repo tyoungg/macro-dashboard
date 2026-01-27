@@ -1,0 +1,198 @@
+import os
+import sys
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+# Add the project root to sys.path to allow imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from dashboard.data_loader import fetch_fred_series, fetch_treasury_auctions, get_equity_breadth, get_bank_stress
+from indicators.rates import ten_year_yield, term_premium, yield_curve_2s10s
+from indicators.liquidity import fed_balance_sheet, bank_reserves
+from indicators.credit import hy_credit_spread, treasury_auctions
+from indicators.housing import thirty_year_mortgage
+from indicators.equities import bank_stress, equity_breadth
+from dashboard.regime import classify, get_regime_emoji
+from dashboard.signals import get_signal_color
+
+def main():
+    print("Starting Macro Dashboard Update...")
+
+    # 1. Fetch Data
+    print("Fetching data from FRED and Treasury...")
+    dgs10 = fetch_fred_series("DGS10")
+    t10y2y = fetch_fred_series("T10Y2Y")
+    walcl = fetch_fred_series("WALCL")
+    totresns = fetch_fred_series("TOTRESNS")
+    hy_spread = fetch_fred_series("BAMLH0A0HYM2")
+    mortgage30 = fetch_fred_series("MORTGAGE30US")
+    acmtp10 = fetch_fred_series("ACMTP10")
+
+    auctions_10y = fetch_treasury_auctions("10-Year", "Note")
+    auctions_30y = fetch_treasury_auctions("30-Year", "Bond")
+
+    print("Fetching equity data (this may take a minute)...")
+    breadth_val = get_equity_breadth()
+    bank_stress_val = get_bank_stress()
+
+    # 2. Calculate Indicators
+    print("Calculating indicators...")
+    signals = {}
+
+    signals['10Y Treasury Yield'] = ten_year_yield(dgs10)
+    signals['10Y Term Premium'] = term_premium(acmtp10)
+    signals['2s10s Yield Curve'] = yield_curve_2s10s(t10y2y, dgs10)
+    signals['Fed Balance Sheet'] = fed_balance_sheet(walcl)
+    signals['Bank Reserves'] = bank_reserves(totresns)
+    signals['Treasury Auctions'] = treasury_auctions(auctions_10y, auctions_30y)
+    signals['High Yield Credit Spread'] = hy_credit_spread(hy_spread)
+    signals['Bank Stress'] = bank_stress(bank_stress_val)
+    signals['30Y Mortgage Rate'] = thirty_year_mortgage(mortgage30)
+    signals['Equity Breadth'] = equity_breadth(breadth_val)
+
+    # 3. Classify Regime
+    regime = classify(signals)
+    regime_emoji = get_regime_emoji(regime)
+    print(f"Current Regime: {regime} {regime_emoji}")
+
+    # 4. Save Data
+    os.makedirs("data/raw", exist_ok=True)
+    os.makedirs("data/processed", exist_ok=True)
+    os.makedirs("data/history", exist_ok=True)
+    os.makedirs("charts", exist_ok=True)
+    os.makedirs("reports", exist_ok=True)
+    os.makedirs("docs", exist_ok=True)
+
+    # Save a summary of indicators
+    results_df = pd.DataFrame([
+        {"Indicator": k, "Value": f"{v[0]:.2f}", "Signal": v[1], "Explanation": v[2]}
+        for k, v in signals.items()
+    ])
+    results_df.to_csv("data/processed/latest_indicators.csv", index=False)
+
+    # Append to history
+    history_file = "data/history/regime_history.csv"
+    history_entry = pd.DataFrame([{
+        "Date": datetime.now().strftime("%Y-%m-%d"),
+        "Regime": regime,
+        "Bearish_Count": [v[1] for v in signals.values()].count("Bearish"),
+        "Bullish_Count": [v[1] for v in signals.values()].count("Bullish")
+    }])
+    if os.path.exists(history_file):
+        try:
+            history_df = pd.read_csv(history_file)
+            history_df = pd.concat([history_df, history_entry], ignore_index=True).drop_duplicates(subset=['Date'], keep='last')
+            history_df.to_csv(history_file, index=False)
+        except:
+            history_entry.to_csv(history_file, index=False)
+    else:
+        history_entry.to_csv(history_file, index=False)
+
+    # 5. Generate Charts
+    print("Generating charts...")
+    plt.figure(figsize=(10, 6))
+    counts = results_df['Signal'].value_counts()
+    color_map = {"🟢": "green", "🔴": "red", "🟡": "yellow"}
+    plt.bar(counts.index, counts.values, color=[color_map.get(get_signal_color(s), "gray") for s in counts.index])
+    plt.title(f"Macro Signals Distribution - {datetime.now().strftime('%Y-%m-%d')}")
+    plt.ylabel("Count")
+    plt.savefig("charts/signal_distribution.png")
+    plt.savefig("docs/signal_distribution.png") # Copy for web
+    plt.close()
+
+    # 6. Build Markdown Report
+    print("Building reports...")
+    with open("reports/latest.md", "w") as f:
+        f.write(f"# Macro Dashboard - {datetime.now().strftime('%Y-%m-%d')}\n\n")
+        f.write(f"## Current Regime: {regime} {regime_emoji}\n\n")
+
+        f.write("### Indicator Summary\n\n")
+        f.write("| Indicator | Value | Signal | Explanation |\n")
+        f.write("|-----------|-------|--------|-------------|\n")
+        for k, v in signals.items():
+            color = get_signal_color(v[1])
+            f.write(f"| {k} | {v[0]:.2f} | {color} {v[1]} | {v[2]} |\n")
+
+        f.write("\n![Signal Distribution](../charts/signal_distribution.png)\n")
+        f.write("\n\n*Auto-generated by Macro Dashboard Bot*")
+
+    # 7. Build HTML Dashboard
+    html_content = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Macro Dashboard</title>
+        <style>
+            body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; }}
+            h1, h2 {{ border-bottom: 2px solid #eee; padding-bottom: 10px; }}
+            .regime {{ font-size: 2em; font-weight: bold; margin: 20px 0; padding: 20px; border-radius: 8px; text-align: center; }}
+            .regime-EASING {{ background-color: #e6ffed; color: #22863a; border: 1px solid #34d058; }}
+            .regime-TIGHT {{ background-color: #ffeef0; color: #cb2431; border: 1px solid #f97583; }}
+            .regime-TRANSITION {{ background-color: #fffdef; color: #735c0f; border: 1px solid #ffea7f; }}
+            .regime-PRE-STRESS {{ background-color: #fff5f5; color: #d73a49; border: 2px dashed #cb2431; }}
+            table {{ width: 100%; border-collapse: collapse; margin: 20px 0; }}
+            th, td {{ text-align: left; padding: 12px; border-bottom: 1px solid #eee; }}
+            th {{ background-color: #f6f8fa; }}
+            .signal-Bullish {{ color: #22863a; font-weight: bold; }}
+            .signal-Bearish {{ color: #cb2431; font-weight: bold; }}
+            .signal-Neutral {{ color: #735c0f; font-weight: bold; }}
+            img {{ max-width: 100%; height: auto; margin: 20px 0; border: 1px solid #eee; }}
+            footer {{ margin-top: 50px; font-size: 0.8em; color: #666; text-align: center; }}
+        </style>
+    </head>
+    <body>
+        <h1>Macro Dashboard</h1>
+        <p>Updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC</p>
+
+        <div class="regime regime-{regime.split(' ')[0]}">
+            Current Regime: {regime} {regime_emoji}
+        </div>
+
+        <h2>Indicators</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicator</th>
+                    <th>Value</th>
+                    <th>Signal</th>
+                    <th>Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+    """
+
+    for k, v in signals.items():
+        color_emoji = get_signal_color(v[1])
+        html_content += f"""
+                <tr>
+                    <td>{k}</td>
+                    <td>{v[0]:.2f}</td>
+                    <td class="signal-{v[1]}">{color_emoji} {v[1]}</td>
+                    <td>{v[2]}</td>
+                </tr>
+        """
+
+    html_content += f"""
+            </tbody>
+        </table>
+
+        <h2>Visualizations</h2>
+        <img src="signal_distribution.png" alt="Signal Distribution">
+
+        <footer>
+            <p>Auto-generated by Macro Dashboard Bot</p>
+        </footer>
+    </body>
+    </html>
+    """
+
+    with open("docs/index.html", "w") as f:
+        f.write(html_content)
+
+    print("Dashboard Update Complete!")
+
+if __name__ == "__main__":
+    main()
