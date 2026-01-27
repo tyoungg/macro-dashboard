@@ -46,8 +46,7 @@ def get_gold_signal():
                 "source": "Yahoo/FRED"
             }
 
-        # 1-month change (approx 21 trading days)
-        # Gold change - ensure we get scalar values
+        # 1-month change
         latest_gold_series = gold['Close'].iloc[-1]
         prior_gold_series = gold['Close'].iloc[-21] if len(gold) >= 21 else gold['Close'].iloc[0]
 
@@ -58,7 +57,7 @@ def get_gold_signal():
         # Real Yield change
         ry_latest = float(real_yield.iloc[-1].iloc[0])
         ry_prior = float(real_yield.iloc[-21].iloc[0]) if len(real_yield) >= 21 else float(real_yield.iloc[0].iloc[0])
-        ry_change = ry_latest - ry_prior # in percentage points
+        ry_change = ry_latest - ry_prior
 
         if gold_change > 0 and ry_change < 0:
             signal = "Bullish"
@@ -70,13 +69,16 @@ def get_gold_signal():
             signal = "Neutral"
             explanation = f"Gold ({gold_change*100:+.1f}%) aligned with real rates ({ry_change:+.2f}%)"
 
+        # Use the earliest of the two last dates to be safe about the signal validity
+        last_date = min(gold.index[-1], real_yield.index[-1]).strftime("%Y-%m-%d")
+
         return {
             "indicator": "Gold vs Real Rates",
             "value": round(gold_latest, 2),
             "real_yield_val": round(ry_latest, 2),
             "signal": signal,
             "explanation": explanation,
-            "last_updated": real_yield.index[-1].strftime("%Y-%m-%d"),
+            "last_updated": last_date,
             "source": "Yahoo (Gold) / FRED (TIPS)"
         }
     except Exception as e:

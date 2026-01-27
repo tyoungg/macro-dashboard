@@ -40,7 +40,7 @@ def get_equity_breadth():
             except: continue
 
         if total_valid == 0:
-            return {"indicator": "Equity Breadth", "value": 0, "signal": "Neutral", "explanation": "No valid data"}
+            return {"indicator": "Equity Breadth", "value": 0, "signal": "Neutral", "explanation": "No valid data", "last_updated": datetime.today().strftime("%Y-%m-%d")}
 
         pct = (above_200dma_count / total_valid) * 100
 
@@ -59,11 +59,12 @@ def get_equity_breadth():
             "value": round(pct, 1),
             "signal": signal,
             "explanation": explanation,
-            "last_updated": datetime.today().strftime("%Y-%m-%d"),
+            "last_updated": data.index[-1].strftime("%Y-%m-%d"),
             "source": "S&P 500 (Scraped via Wikipedia/Yahoo)"
         }
     except Exception as e:
-        return {"indicator": "Equity Breadth", "value": 0, "signal": "Neutral", "explanation": f"Error: {e}"}
+        return {"indicator": "Equity Breadth", "value": 0, "signal": "Neutral", "explanation": f"Error: {e}", "last_updated": datetime.today().strftime("%Y-%m-%d")}
 
 if __name__ == "__main__":
-    print(get_equity_breadth())
+    import json
+    print(json.dumps(get_equity_breadth(), indent=2))

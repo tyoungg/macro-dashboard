@@ -15,12 +15,20 @@ def get_bank_stress():
 
         # 1-month relative performance (approx 21 trading days)
         idx = -21 if len(kre) >= 21 else 0
-        kre_return = (kre['Close'].iloc[-1] / kre['Close'].iloc[idx]) - 1
-        spy_return = (spy['Close'].iloc[-1] / spy['Close'].iloc[idx]) - 1
 
-        # Handle cases where result is a Series
-        if isinstance(kre_return, pd.Series): kre_return = kre_return.iloc[0]
-        if isinstance(spy_return, pd.Series): spy_return = spy_return.iloc[0]
+        # Ensure we get scalar values for division
+        latest_kre = kre['Close'].iloc[-1]
+        prior_kre = kre['Close'].iloc[idx]
+        latest_spy = spy['Close'].iloc[-1]
+        prior_spy = spy['Close'].iloc[idx]
+
+        if isinstance(latest_kre, pd.Series): latest_kre = latest_kre.iloc[0]
+        if isinstance(prior_kre, pd.Series): prior_kre = prior_kre.iloc[0]
+        if isinstance(latest_spy, pd.Series): latest_spy = latest_spy.iloc[0]
+        if isinstance(prior_spy, pd.Series): prior_spy = prior_spy.iloc[0]
+
+        kre_return = (latest_kre / prior_kre) - 1
+        spy_return = (latest_spy / prior_spy) - 1
 
         rel_perf = (kre_return - spy_return) * 100
 
@@ -39,11 +47,12 @@ def get_bank_stress():
             "value": round(rel_perf, 2),
             "signal": signal,
             "explanation": explanation,
-            "last_updated": end.strftime("%Y-%m-%d"),
+            "last_updated": kre.index[-1].strftime("%Y-%m-%d"),
             "source": "Yahoo Finance (KRE vs SPY)"
         }
     except Exception as e:
         return {"indicator": "Bank Stress", "signal": "Neutral", "explanation": f"Error: {e}", "value": 0}
 
 if __name__ == "__main__":
-    print(get_bank_stress())
+    import json
+    print(json.dumps(get_bank_stress(), indent=2))

@@ -15,7 +15,8 @@ def fetch_fred_data(series_id, days):
     return pd.DataFrame()
 
 def get_bank_reserves():
-    df = fetch_fred_data("TOTRESNS", 60)
+    # Using WRESBAL for weekly reserve balances
+    df = fetch_fred_data("WRESBAL", 60)
     if df.empty:
         return {"indicator": "Bank Reserves", "signal": "Neutral", "explanation": "No data", "value": 0}
 
@@ -41,8 +42,9 @@ def get_bank_reserves():
         "signal": signal,
         "explanation": explanation,
         "last_updated": df.index[-1].strftime("%Y-%m-%d"),
-        "source": "FRED"
+        "source": "FRED (WRESBAL)"
     }
 
 if __name__ == "__main__":
-    print(get_bank_reserves())
+    import json
+    print(json.dumps(get_bank_reserves(), indent=2))
