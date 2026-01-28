@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-01-27
+# Macro Dashboard - 2026-01-28
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -6,17 +6,17 @@
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 4.24 | 🔴 Bearish | Rates up 27.0bps over 3m, tightening pressure | 2026-01-23 | FRED |
-| 10Y Term Premium | 0.604 | 🔴 Bearish | Elevated term premium (0.60%): investors demanding credibility compensation | 2026-01-16 | NY Fed ACM via FRED |
-| 2s10s Yield Curve | 0.66 | 🟡 Neutral | Curve at 0.66%, mixed or flattening signal | 2026-01-26 | FRED |
+| 10Y Treasury Yield | 4.22 | 🟡 Neutral | Rates stable (+21.0bps over 3m) | 2026-01-26 | FRED |
+| 10Y Term Premium | 0.622 | 🔴 Bearish | Elevated term premium (0.62%): investors demanding credibility compensation | 2026-01-23 | NY Fed ACM via FRED |
+| 2s10s Yield Curve | 0.71 | 🔴 Bearish | Bear steepening (Spread up, 10Y up) - credibility concerns | 2026-01-27 | FRED |
 | Fed Balance Sheet | 6584580.0 | 🟢 Bullish | Fed balance sheet expanding (+$3.3B over 4w) | 2026-01-21 | FRED |
 | Bank Reserves | 2954903.0 | 🟡 Neutral | Bank reserves stable ($-0.7B over 4w) | 2026-01-21 | FRED (WRESBAL) |
 | Treasury Auctions | 2.33 | 🔴 Bearish | Weak auctions: Avg BTC 2.33, max tail 6.4bps | 2026-01-22 | Treasury Fiscal Data |
 | High Yield Credit Spread | 2.69 | 🟢 Bullish | HY spreads tight (269 bps) and compressing | 2026-01-26 | FRED (ICE BofA) |
-| Bank Stress | 1.38 | 🟢 Bullish | Banks outperforming S&P 500 by 1.4% | 2026-01-27 | Yahoo Finance (KRE vs SPY) |
+| Bank Stress | 1.87 | 🟢 Bullish | Banks outperforming S&P 500 by 1.9% | 2026-01-27 | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 6.09 | 🟡 Neutral | Mortgage rates stable (-8 bps over 3m) | 2026-01-22 | FRED (Freddie Mac) |
 | Equity Breadth | 74.0 | 🟢 Bullish | Broad participation: 74.0% of stocks above 200DMA | 2026-01-27 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 5088.7 | 🟢 Bullish | Gold rising (+12.4%) as real yields fall (-0.02%) | 2026-01-23 | Yahoo (Gold) / FRED (TIPS) |
+| Gold vs Real Rates | 5281.5 | 🟢 Bullish | Gold rising (+22.1%) as real yields fall (-0.01%) | 2026-01-26 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
