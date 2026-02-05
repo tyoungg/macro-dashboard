@@ -3,7 +3,9 @@ import requests
 from datetime import datetime
 
 def fetch_treasury_auctions(security_term="10-Year", security_type="Note"):
-    url = f"https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query?filter=security_type:eq:{security_type},security_term:eq:{security_term}&limit=1&sort=-auction_date"
+    # Filter for bid_to_cover_ratio:gt:0 to ensure we only get finalized auction results
+    # This avoids records that are announced but have no results yet (values set to 'null')
+    url = f"https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query?filter=security_type:eq:{security_type},security_term:eq:{security_term},bid_to_cover_ratio:gt:0&limit=1&sort=-auction_date"
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json().get('data', [])
@@ -17,11 +19,21 @@ def get_treasury_auctions():
     if not auc_10y or not auc_30y:
         return {"indicator": "Treasury Auctions", "signal": "Neutral", "explanation": "No data", "value": 0}
 
-    btc_10y = float(auc_10y['bid_to_cover_ratio'])
-    tail_10y = (float(auc_10y['high_yield']) - float(auc_10y['avg_med_yield'])) * 100
+    try:
+        btc_10y = float(auc_10y['bid_to_cover_ratio'])
+        tail_10y = (float(auc_10y['high_yield']) - float(auc_10y['avg_med_yield'])) * 100
 
-    btc_30y = float(auc_30y['bid_to_cover_ratio'])
-    tail_30y = (float(auc_30y['high_yield']) - float(auc_30y['avg_med_yield'])) * 100
+        btc_30y = float(auc_30y['bid_to_cover_ratio'])
+        tail_30y = (float(auc_30y['high_yield']) - float(auc_30y['avg_med_yield'])) * 100
+    except (ValueError, TypeError, KeyError) as e:
+        return {
+            "indicator": "Treasury Auctions",
+            "signal": "Neutral",
+            "explanation": f"Data processing error: {e}",
+            "value": 0,
+            "last_updated": auc_10y.get('auction_date', 'N/A'),
+            "source": "Treasury Fiscal Data"
+        }
 
     avg_btc = (btc_10y + btc_30y) / 2
     max_tail = max(tail_10y, tail_30y)
