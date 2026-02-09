@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-02-07
+# Macro Dashboard - 2026-02-09
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -16,7 +16,7 @@
 | Bank Stress | 7.99 | 🟢 Bullish | Banks outperforming S&P 500 by 8.0% | 2026-02-06 | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 6.11 | 🟡 Neutral | Mortgage rates stable (-13 bps over 3m) | 2026-02-05 | FRED (Freddie Mac) |
 | Equity Breadth | 72.0 | 🟢 Bullish | Broad participation: 72.0% of stocks above 200DMA | 2026-02-06 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4951.2 | 🟡 Neutral | Gold (+11.3%) aligned with real rates (+0.01%) | 2026-02-05 | Yahoo (Gold) / FRED (TIPS) |
+| Gold vs Real Rates | 5027.4 | 🟡 Neutral | Gold (+12.0%) aligned with real rates (+0.01%) | 2026-02-05 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
