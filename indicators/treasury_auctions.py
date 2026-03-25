@@ -5,7 +5,10 @@ from datetime import datetime
 def fetch_treasury_auctions(security_term="10-Year", security_type="Note"):
     # Filter for bid_to_cover_ratio:gt:0 to ensure we only get finalized auction results
     # This avoids records that are announced but have no results yet (values set to 'null')
-    url = f"https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query?filter=security_type:eq:{security_type},security_term:eq:{security_term},bid_to_cover_ratio:gt:0&limit=1&sort=-auction_date"
+    # Filter for bid_to_cover_ratio:gt:0 to ensure we only get finalized auction results
+#    url = f"https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query?filter=security_type:eq:{security_type},security_term:eq:{security_term},bid_to_cover_ratio:gt:0&limit=1&sort=-auction_date"
+    # Use original_security_term to capture reopenings (e.g. 9-Year 10-Month for a 10-Year Note)
+    url = f"https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query?filter=security_type:eq:{security_type},original_security_term:eq:{security_term},bid_to_cover_ratio:gt:0&limit=1&sort=-auction_date"
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json().get('data', [])
