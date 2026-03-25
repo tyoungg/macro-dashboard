@@ -11,12 +11,12 @@
 | 2s10s Yield Curve | 0.49 | 🟡 Neutral | Curve at 0.49%, mixed or flattening signal | 2026-03-24 | FRED |
 | Fed Balance Sheet | 6655939.0 | 🟢 Bullish | Fed balance sheet expanding (+$42.5B over 4w) | 2026-03-18 | FRED |
 | Bank Reserves | 3019995.0 | 🟢 Bullish | Bank reserves up $70.2B over 4w, liquidity easing | 2026-03-18 | FRED (WRESBAL) |
-| Treasury Auctions | 2.57 | 🔴 Bearish | Weak auctions: Avg BTC 2.57, max tail 6.7bps | 2026-02-11 | Treasury Fiscal Data |
+| Treasury Auctions | 2.46 | 🔴 Bearish | Weak auctions: Avg BTC 2.46, max tail 7.1bps | 2026-03-19 | Treasury Fiscal Data |
 | High Yield Credit Spread | 3.19 | 🟡 Neutral | HY spreads at 319 bps, stable | 2026-03-23 | FRED (ICE BofA) |
 | Bank Stress | -1.05 | 🟡 Neutral | Banks performing in-line with S&P 500 (-1.0%) | 2026-03-24 | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 6.22 | 🟡 Neutral | Mortgage rates stable (+4 bps over 3m) | 2026-03-19 | FRED (Freddie Mac) |
 | Equity Breadth | 54.0 | 🟡 Neutral | Average participation: 54.0% of stocks above 200DMA | 2026-03-24 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4580.2 | 🔴 Bearish | Rising real rates (+0.24%) pressuring gold (-12.0%) | 2026-03-23 | Yahoo (Gold) / FRED (TIPS) |
+| Gold vs Real Rates | 4543.6 | 🔴 Bearish | Rising real rates (+0.24%) pressuring gold (-12.7%) | 2026-03-23 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
