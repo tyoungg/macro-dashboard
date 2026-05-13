@@ -16,7 +16,7 @@
 | Bank Stress | -7.83 | 🔴 Bearish | Banks underperforming S&P 500 by 7.8% | 2026-05-12 | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 6.37 | 🟡 Neutral | Mortgage rates stable (+28 bps over 3m) | 2026-05-07 | FRED (Freddie Mac) |
 | Equity Breadth | 56.0 | 🟡 Neutral | Average participation: 56.0% of stocks above 200DMA | 2026-05-12 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4711.5 | 🔴 Bearish | Rising real rates (+0.03%) pressuring gold (-1.8%) | 2026-05-11 | Yahoo (Gold) / FRED (TIPS) |
+| Gold vs Real Rates | 4687.6 | 🔴 Bearish | Rising real rates (+0.03%) pressuring gold (-2.3%) | 2026-05-11 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
