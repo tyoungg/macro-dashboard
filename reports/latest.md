@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-05-28
+# Macro Dashboard - 2026-05-29
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -6,17 +6,17 @@
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 4.5 | 🔴 Bearish | Rates up 48.0bps over 3m, tightening pressure | 2026-05-26 | FRED |
+| 10Y Treasury Yield | 4.48 | 🔴 Bearish | Rates up 51.0bps over 3m, tightening pressure | 2026-05-27 | FRED |
 | 10Y Term Premium | 0.829 | 🔴 Bearish | Elevated term premium (0.83%): investors demanding credibility compensation | 2026-05-22 | NY Fed ACM via FRED |
-| 2s10s Yield Curve | 0.48 | 🟡 Neutral | Curve at 0.48%, mixed or flattening signal | 2026-05-27 | FRED |
-| Fed Balance Sheet | 6713643.0 | 🟢 Bullish | Fed balance sheet expanding (+$6.2B over 4w) | 2026-05-20 | FRED |
-| Bank Reserves | 3129562.0 | 🟢 Bullish | Bank reserves up $227.7B over 4w, liquidity easing | 2026-05-20 | FRED (WRESBAL) |
-| Treasury Auctions | 2.69 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.69, Tail 3.9bps | 2026-05-27 | Treasury Fiscal Data |
+| 2s10s Yield Curve | 0.46 | 🟡 Neutral | Curve at 0.46%, mixed or flattening signal | 2026-05-28 | FRED |
+| Fed Balance Sheet | 6704383.0 | 🟢 Bullish | Fed balance sheet expanding (+$4.4B over 4w) | 2026-05-27 | FRED |
+| Bank Reserves | 3066560.0 | 🟢 Bullish | Bank reserves up $148.0B over 4w, liquidity easing | 2026-05-27 | FRED (WRESBAL) |
+| Treasury Auctions | 2.74 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.74, Tail 3.7bps | 2026-05-28 | Treasury Fiscal Data |
 | High Yield Credit Spread | 2.71 | 🟢 Bullish | HY spreads tight (271 bps) and compressing | 2026-05-27 | FRED (ICE BofA) |
-| Bank Stress | -5.5 | 🔴 Bearish | Banks underperforming S&P 500 by 5.5% | 2026-05-28 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 6.51 | 🔴 Bearish | Mortgage rates up 53 bps over 3m, housing headwind | 2026-05-21 | FRED (Freddie Mac) |
-| Equity Breadth | 64.0 | 🟡 Neutral | Average participation: 64.0% of stocks above 200DMA | 2026-05-28 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4495.4 | 🔴 Bearish | Rising real rates (+0.19%) pressuring gold (-1.1%) | 2026-05-26 | Yahoo (Gold) / FRED (TIPS) |
+| Bank Stress | -5.97 | 🔴 Bearish | Banks underperforming S&P 500 by 6.0% | 2026-05-29 | Yahoo Finance (KRE vs SPY) |
+| 30Y Mortgage Rate | 6.53 | 🔴 Bearish | Mortgage rates up 53 bps over 3m, housing headwind | 2026-05-28 | FRED (Freddie Mac) |
+| Equity Breadth | 60.0 | 🟡 Neutral | Average participation: 60.0% of stocks above 200DMA | 2026-05-29 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 4562.2 | 🔴 Bearish | Rising real rates (+0.17%) pressuring gold (-1.1%) | 2026-05-27 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
