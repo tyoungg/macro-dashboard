@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-08-24
+# Macro Dashboard - 2026-08-25
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -6,17 +6,17 @@
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 4.69 | 🟡 Neutral | Rates stable (+12.0bps over 3m) | 2026-08-20 | FRED |
+| 10Y Treasury Yield | 4.74 | 🟡 Neutral | Rates stable (+18.0bps over 3m) | 2026-08-21 | FRED |
 | 10Y Term Premium | 0.839 | 🔴 Bearish | Elevated term premium (0.84%): investors demanding credibility compensation | 2026-08-14 | NY Fed ACM via FRED |
-| 2s10s Yield Curve | 0.5 | 🟢 Bullish | Bull steepening (Spread up, 10Y down) - growth friendly | 2026-08-21 | FRED |
+| 2s10s Yield Curve | 0.46 | 🔴 Bearish | Bear steepening (Spread up, 10Y up) - credibility concerns | 2026-08-24 | FRED |
 | Fed Balance Sheet | 6745699.0 | 🔴 Bearish | Fed balance sheet contracting (-$1.7B over 4w) | 2026-08-19 | FRED |
 | Bank Reserves | 2935287.0 | 🔴 Bearish | Bank reserves down $126.9B over 4w, liquidity tightening | 2026-08-19 | FRED (WRESBAL) |
-| Treasury Auctions | 2.95 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.95, Tail 2.8bps | 2026-08-20 | Treasury Fiscal Data |
-| High Yield Credit Spread | 2.75 | 🟢 Bullish | HY spreads tight (275 bps) and compressing | 2026-08-20 | FRED (ICE BofA) |
-| Bank Stress | -4.77 | 🟡 Neutral | Banks performing in-line with S&P 500 (-4.8%) | 2026-08-21 | Yahoo Finance (KRE vs SPY) |
+| Treasury Auctions | 2.91 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.91, Tail 2.7bps | 2026-08-24 | Treasury Fiscal Data |
+| High Yield Credit Spread | 2.7 | 🟢 Bullish | HY spreads tight (270 bps) and compressing | 2026-08-21 | FRED (ICE BofA) |
+| Bank Stress | -4.3 | 🟡 Neutral | Banks performing in-line with S&P 500 (-4.3%) | 2026-08-24 | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 6.65 | 🟡 Neutral | Mortgage rates stable (+12 bps over 3m) | 2026-08-20 | FRED (Freddie Mac) |
-| Equity Breadth | 76.0 | 🟢 Bullish | Broad participation: 76.0% of stocks above 200DMA | 2026-08-21 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4698.4 | 🟢 Bullish | Gold rising (+15.3%) as real yields fall (-0.08%) | 2026-08-20 | Yahoo (Gold) / FRED (TIPS) |
+| Equity Breadth | 80.0 | 🟢 Bullish | Broad participation: 80.0% of stocks above 200DMA | 2026-08-24 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 4694.3 | 🟢 Bullish | Gold rising (+16.3%) as real yields fall (-0.03%) | 2026-08-21 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
