@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-08-26
+# Macro Dashboard - 2026-08-27
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -6,17 +6,17 @@
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 4.7 | 🟡 Neutral | Rates stable (+20.0bps over 3m) | 2026-08-24 | FRED |
+| 10Y Treasury Yield | 4.66 | 🟡 Neutral | Rates stable (+21.0bps over 3m) | 2026-08-26 | FRED |
 | 10Y Term Premium | 0.868 | 🔴 Bearish | Elevated term premium (0.87%): investors demanding credibility compensation | 2026-08-21 | NY Fed ACM via FRED |
-| 2s10s Yield Curve | 0.47 | 🔴 Bearish | Bear steepening (Spread up, 10Y up) - credibility concerns | 2026-08-25 | FRED |
-| Fed Balance Sheet | 6745699.0 | 🔴 Bearish | Fed balance sheet contracting (-$1.7B over 4w) | 2026-08-19 | FRED |
-| Bank Reserves | 2935287.0 | 🔴 Bearish | Bank reserves down $126.9B over 4w, liquidity tightening | 2026-08-19 | FRED (WRESBAL) |
-| Treasury Auctions | 2.86 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.86, Tail 2.7bps | 2026-08-25 | Treasury Fiscal Data |
-| High Yield Credit Spread | 2.69 | 🟢 Bullish | HY spreads tight (269 bps) and compressing | 2026-08-24 | FRED (ICE BofA) |
-| Bank Stress | -6.58 | 🔴 Bearish | Banks underperforming S&P 500 by 6.6% | 2026-08-25 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 6.65 | 🟡 Neutral | Mortgage rates stable (+12 bps over 3m) | 2026-08-20 | FRED (Freddie Mac) |
-| Equity Breadth | 74.0 | 🟢 Bullish | Broad participation: 74.0% of stocks above 200DMA | 2026-08-25 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4673.4 | 🟢 Bullish | Gold rising (+15.8%) as real yields fall (-0.06%) | 2026-08-24 | Yahoo (Gold) / FRED (TIPS) |
+| 2s10s Yield Curve | 0 | 🟡 Neutral | No data | N/A | N/A |
+| Fed Balance Sheet | 6730912.0 | 🔴 Bearish | Fed balance sheet contracting (-$7.3B over 4w) | 2026-08-26 | FRED |
+| Bank Reserves | 2924936.0 | 🔴 Bearish | Bank reserves down $59.6B over 4w, liquidity tightening | 2026-08-26 | FRED (WRESBAL) |
+| Treasury Auctions | 2.69 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.69, Tail 3.7bps | 2026-08-27 | Treasury Fiscal Data |
+| High Yield Credit Spread | 2.67 | 🟢 Bullish | HY spreads tight (267 bps) and compressing | 2026-08-26 | FRED (ICE BofA) |
+| Bank Stress | -6.01 | 🔴 Bearish | Banks underperforming S&P 500 by 6.0% | 2026-08-27 | Yahoo Finance (KRE vs SPY) |
+| 30Y Mortgage Rate | 6.66 | 🟡 Neutral | Mortgage rates stable (+18 bps over 3m) | 2026-08-27 | FRED (Freddie Mac) |
+| Equity Breadth | 74.0 | 🟢 Bullish | Broad participation: 74.0% of stocks above 200DMA | 2026-08-27 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 4658.2 | 🟢 Bullish | Gold rising (+13.6%) as real yields fall (-0.07%) | 2026-08-26 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
