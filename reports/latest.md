@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-10-07
+# Macro Dashboard - 2026-10-08
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -6,17 +6,17 @@
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 5.31 | 🔴 Bearish | Rates up 75.0bps over 3m, tightening pressure | 2026-10-05 | FRED |
+| 10Y Treasury Yield | 5.27 | 🔴 Bearish | Rates up 73.0bps over 3m, tightening pressure | 2026-10-06 | FRED |
 | 10Y Term Premium | 1.085 | 🔴 Bearish | Elevated term premium (1.08%): investors demanding credibility compensation | 2026-10-02 | NY Fed ACM via FRED |
-| 2s10s Yield Curve | 0.48 | 🔴 Bearish | Bear steepening (Spread up, 10Y up) - credibility concerns | 2026-10-06 | FRED |
+| 2s10s Yield Curve | 0.51 | 🔴 Bearish | Bear steepening (Spread up, 10Y up) - credibility concerns | 2026-10-07 | FRED |
 | Fed Balance Sheet | 6743031.0 | 🟢 Bullish | Fed balance sheet expanding (+$5.8B over 4w) | 2026-09-30 | FRED |
 | Bank Reserves | 2948090.0 | 🟢 Bullish | Bank reserves up $53.6B over 4w, liquidity easing | 2026-09-30 | FRED (WRESBAL) |
-| Treasury Auctions | 2.81 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.81, Tail 3.5bps | 2026-10-07 | Treasury Fiscal Data |
-| High Yield Credit Spread | 3.03 | 🟡 Neutral | HY spreads at 303 bps, stable | 2026-10-06 | FRED (ICE BofA) |
-| Bank Stress | -7.5 | 🔴 Bearish | Banks underperforming S&P 500 by 7.5% | 2026-10-07 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 7.28 | 🔴 Bearish | Mortgage rates up 79 bps over 3m, housing headwind | 2026-10-01 | FRED (Freddie Mac) |
-| Equity Breadth | 46.0 | 🟡 Neutral | Average participation: 46.0% of stocks above 200DMA | 2026-10-07 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4143.2 | 🔴 Bearish | Rising real rates (+0.52%) pressuring gold (-7.1%) | 2026-10-05 | Yahoo (Gold) / FRED (TIPS) |
+| Treasury Auctions | 2.72 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.72, Tail 4.1bps | 2026-10-08 | Treasury Fiscal Data |
+| High Yield Credit Spread | 3.09 | 🟡 Neutral | HY spreads at 309 bps, stable | 2026-10-07 | FRED (ICE BofA) |
+| Bank Stress | -7.26 | 🔴 Bearish | Banks underperforming S&P 500 by 7.3% | 2026-10-08 | Yahoo Finance (KRE vs SPY) |
+| 30Y Mortgage Rate | 7.4 | 🔴 Bearish | Mortgage rates up 85 bps over 3m, housing headwind | 2026-10-08 | FRED (Freddie Mac) |
+| Equity Breadth | 56.0 | 🟡 Neutral | Average participation: 56.0% of stocks above 200DMA | 2026-10-08 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 4158.1 | 🔴 Bearish | Rising real rates (+0.48%) pressuring gold (-5.7%) | 2026-10-06 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
