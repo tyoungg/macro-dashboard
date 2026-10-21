@@ -3,6 +3,7 @@ import yfinance as yf
 import requests
 from io import StringIO
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 # -----------------------------
 # Configuration
@@ -43,9 +44,19 @@ def get_gold_signal():
         real_yield = fetch_fred_data(REAL_YIELD_ID, LOOKBACK_DAYS)
 
         if gold.empty or real_yield.empty:
+            val, date_str = get_last_known_history("Gold vs Real Rates")
+            if val is not None:
+                return {
+                    "indicator": "Gold vs Real Rates",
+                    "value": round(val, 2),
+                    "signal": "Neutral",
+                    "explanation": f"Latest cached value: ${val:.2f}",
+                    "last_updated": date_str,
+                    "source": f"Yahoo/FRED (Cached: {date_str})"
+                }
             return {
                 "indicator": "Gold vs Real Rates",
-                "value": 0,
+                "value": None,
                 "signal": "Neutral",
                 "explanation": "Data unavailable",
                 "last_updated": end.strftime("%Y-%m-%d"),
@@ -90,7 +101,7 @@ def get_gold_signal():
     except Exception as e:
         return {
             "indicator": "Gold vs Real Rates",
-            "value": 0,
+            "value": None,
             "signal": "Neutral",
             "explanation": f"Error: {e}",
             "last_updated": end.strftime("%Y-%m-%d"),

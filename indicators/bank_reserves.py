@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from io import StringIO
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 def fetch_fred_data(series_id, days):
     end = datetime.today()
@@ -24,7 +25,18 @@ def get_bank_reserves():
     # Using WRESBAL for weekly reserve balances
     df = fetch_fred_data("WRESBAL", 60)
     if df.empty:
-        return {"indicator": "Bank Reserves", "signal": "Neutral", "explanation": "No data", "value": 0}
+        val, date_str = get_last_known_history("Bank Reserves")
+        if val is not None:
+            return {
+                "indicator": "Bank Reserves",
+                "value": round(val, 0),
+                "weekly_change_billions": 0.0,
+                "signal": "Neutral",
+                "explanation": f"Latest cached value: ${val/1000:.1f}B",
+                "last_updated": date_str,
+                "source": f"FRED WRESBAL (Cached: {date_str})"
+            }
+        return {"indicator": "Bank Reserves", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0]) # Millions
     prev_val = float(df.iloc[-5].iloc[0]) if len(df) >= 5 else float(df.iloc[0].iloc[0])

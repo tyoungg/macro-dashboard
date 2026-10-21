@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from io import StringIO
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 def fetch_fred_data(series_id, days):
     end = datetime.today()
@@ -25,7 +26,17 @@ def get_yield_curve():
     df_10y = fetch_fred_data("DGS10", 60)
 
     if df_2s10s.empty or df_10y.empty:
-        return {"indicator": "2s10s Yield Curve", "signal": "Neutral", "explanation": "No data", "value": 0}
+        val, date_str = get_last_known_history("2s10s Yield Curve")
+        if val is not None:
+            return {
+                "indicator": "2s10s Yield Curve",
+                "value": round(val, 3),
+                "signal": "Neutral",
+                "explanation": f"Latest cached value: {val:.2f}%",
+                "last_updated": date_str,
+                "source": f"FRED (Cached: {date_str})"
+            }
+        return {"indicator": "2s10s Yield Curve", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_spread = float(df_2s10s.iloc[-1].iloc[0])
     prev_spread = float(df_2s10s.iloc[-21].iloc[0]) if len(df_2s10s) >= 21 else float(df_2s10s.iloc[0].iloc[0])

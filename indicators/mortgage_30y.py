@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from io import StringIO
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 def fetch_fred_data(series_id, days):
     end = datetime.today()
@@ -23,7 +24,17 @@ def fetch_fred_data(series_id, days):
 def get_mortgage_30y():
     df = fetch_fred_data("MORTGAGE30US", 120)
     if df.empty:
-        return {"indicator": "30Y Mortgage Rate", "signal": "Neutral", "explanation": "No data", "value": 0}
+        val, date_str = get_last_known_history("30Y Mortgage Rate")
+        if val is not None:
+            return {
+                "indicator": "30Y Mortgage Rate",
+                "value": round(val, 2),
+                "signal": "Neutral",
+                "explanation": f"Latest cached value: {val:.2f}%",
+                "last_updated": date_str,
+                "source": f"FRED Freddie Mac (Cached: {date_str})"
+            }
+        return {"indicator": "30Y Mortgage Rate", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0])
     # 3 months is ~13 weeks

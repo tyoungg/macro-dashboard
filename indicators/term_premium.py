@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from io import StringIO
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 # -----------------------------
 # Configuration
@@ -34,9 +35,20 @@ def get_term_premium():
     """
     df = fetch_fred_data(SERIES_ID, LOOKBACK_DAYS)
     if df.empty:
+        val, date_str = get_last_known_history("10Y Term Premium")
+        if val is not None:
+            return {
+                "indicator": "10Y Term Premium",
+                "value": round(val, 3),
+                "weekly_change": 0.0,
+                "signal": "Neutral",
+                "explanation": f"Latest cached value: {val:.2f}%",
+                "last_updated": date_str,
+                "source": f"NY Fed ACM via FRED (Cached: {date_str})"
+            }
         return {
             "indicator": "10Y Term Premium",
-            "value": 0.0,
+            "value": None,
             "weekly_change": 0.0,
             "signal": "Neutral",
             "explanation": "Data unavailable",

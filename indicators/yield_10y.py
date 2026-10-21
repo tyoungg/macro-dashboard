@@ -4,6 +4,7 @@ import requests
 # but each file is standalone.
 from io import StringIO
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 SERIES_ID = "DGS10"
 LOOKBACK_DAYS = 120
@@ -29,7 +30,18 @@ def fetch_fred_data(series_id, days):
 def get_yield_10y():
     df = fetch_fred_data(SERIES_ID, LOOKBACK_DAYS)
     if df.empty:
-        return {"indicator": "10Y Treasury Yield", "signal": "Neutral", "explanation": "No data", "value": 0}
+        val, date_str = get_last_known_history("10Y Treasury Yield")
+        if val is not None:
+            return {
+                "indicator": "10Y Treasury Yield",
+                "value": round(val, 3),
+                "weekly_change_bps": 0.0,
+                "signal": "Neutral",
+                "explanation": f"Latest cached value: {val:.2f}%",
+                "last_updated": date_str,
+                "source": f"FRED (Cached: {date_str})"
+            }
+        return {"indicator": "10Y Treasury Yield", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0])
     # 3 months change

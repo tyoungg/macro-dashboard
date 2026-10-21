@@ -3,6 +3,7 @@ import yfinance as yf
 import requests
 from io import StringIO
 from datetime import datetime
+from indicators.utils import get_last_known_history
 
 def get_sp500_tickers():
     try:
@@ -40,7 +41,17 @@ def get_equity_breadth():
             except: continue
 
         if total_valid == 0:
-            return {"indicator": "Equity Breadth", "value": 0, "signal": "Neutral", "explanation": "No valid data", "last_updated": datetime.today().strftime("%Y-%m-%d")}
+            val, date_str = get_last_known_history("Equity Breadth")
+            if val is not None:
+                return {
+                    "indicator": "Equity Breadth",
+                    "value": round(val, 1),
+                    "signal": "Neutral",
+                    "explanation": f"Latest cached participation: {val:.1f}% of stocks above 200DMA",
+                    "last_updated": date_str,
+                    "source": f"S&P 500 (Cached: {date_str})"
+                }
+            return {"indicator": "Equity Breadth", "value": None, "signal": "Neutral", "explanation": "No valid data", "last_updated": datetime.today().strftime("%Y-%m-%d")}
 
         pct = (above_200dma_count / total_valid) * 100
 
@@ -63,7 +74,17 @@ def get_equity_breadth():
             "source": "S&P 500 (Scraped via Wikipedia/Yahoo)"
         }
     except Exception as e:
-        return {"indicator": "Equity Breadth", "value": 0, "signal": "Neutral", "explanation": f"Error: {e}", "last_updated": datetime.today().strftime("%Y-%m-%d")}
+        val, date_str = get_last_known_history("Equity Breadth")
+        if val is not None:
+            return {
+                "indicator": "Equity Breadth",
+                "value": round(val, 1),
+                "signal": "Neutral",
+                "explanation": f"Latest cached participation: {val:.1f}% of stocks above 200DMA",
+                "last_updated": date_str,
+                "source": f"S&P 500 (Cached: {date_str})"
+            }
+        return {"indicator": "Equity Breadth", "value": None, "signal": "Neutral", "explanation": f"Error: {e}", "last_updated": datetime.today().strftime("%Y-%m-%d")}
 
 if __name__ == "__main__":
     import json

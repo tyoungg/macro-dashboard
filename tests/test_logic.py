@@ -61,8 +61,48 @@ def test_fetch_fred_data_html_response(mocker=None):
         result = get_yield_10y()
         assert result["indicator"] == "10Y Treasury Yield"
         assert result["signal"] == "Neutral"
-        assert result["explanation"] == "No data"
-        assert result["value"] == 0
+        assert "Latest cached value" in result["explanation"]
+        assert result["value"] is not None
+
+def test_history_fallback_logic():
+    import pandas as pd
+    from dashboard.build_dashboard import main
+    from unittest.mock import patch
+
+    # Mock indicator results where Equity Breadth failed and returned value 0 with 'No data'
+    fake_results = [
+        {"indicator": "10Y Treasury Yield", "value": 4.2, "signal": "Neutral", "explanation": "Rates stable", "last_updated": "2026-10-21", "source": "FRED"},
+        {"indicator": "10Y Term Premium", "value": 0.5, "signal": "Neutral", "explanation": "Moderate", "last_updated": "2026-10-21", "source": "FRED"},
+        {"indicator": "2s10s Yield Curve", "value": 0.3, "signal": "Neutral", "explanation": "Curve", "last_updated": "2026-10-21", "source": "FRED"},
+        {"indicator": "Fed Balance Sheet", "value": 6500000, "signal": "Neutral", "explanation": "Flat", "last_updated": "2026-10-21", "source": "FRED"},
+        {"indicator": "Bank Reserves", "value": 3000000, "signal": "Neutral", "explanation": "Stable", "last_updated": "2026-10-21", "source": "FRED"},
+        {"indicator": "Treasury Auctions", "value": 2.5, "signal": "Neutral", "explanation": "Stable", "last_updated": "2026-10-21", "source": "Treasury"},
+        {"indicator": "High Yield Credit Spread", "value": 3.0, "signal": "Neutral", "explanation": "HY spreads", "last_updated": "2026-10-21", "source": "FRED"},
+        {"indicator": "Bank Stress", "value": 2.0, "signal": "Neutral", "explanation": "In line", "last_updated": "2026-10-21", "source": "Yahoo"},
+        {"indicator": "30Y Mortgage Rate", "value": 6.2, "signal": "Neutral", "explanation": "Stable", "last_updated": "2026-10-21", "source": "FRED"},
+        {"indicator": "Equity Breadth", "value": 0, "signal": "Neutral", "explanation": "No data", "last_updated": "2026-10-21", "source": "S&P 500"},
+        {"indicator": "Gold vs Real Rates", "value": 4000, "signal": "Neutral", "explanation": "Aligned", "last_updated": "2026-10-21", "source": "Yahoo"}
+    ]
+
+    with patch("dashboard.build_dashboard.get_yield_10y", return_value=fake_results[0]), \
+         patch("dashboard.build_dashboard.get_term_premium", return_value=fake_results[1]), \
+         patch("dashboard.build_dashboard.get_yield_curve", return_value=fake_results[2]), \
+         patch("dashboard.build_dashboard.get_fed_balance_sheet", return_value=fake_results[3]), \
+         patch("dashboard.build_dashboard.get_bank_reserves", return_value=fake_results[4]), \
+         patch("dashboard.build_dashboard.get_treasury_auctions", return_value=fake_results[5]), \
+         patch("dashboard.build_dashboard.get_credit_spread", return_value=fake_results[6]), \
+         patch("dashboard.build_dashboard.get_bank_stress", return_value=fake_results[7]), \
+         patch("dashboard.build_dashboard.get_mortgage_30y", return_value=fake_results[8]), \
+         patch("dashboard.build_dashboard.get_equity_breadth", return_value=fake_results[9]), \
+         patch("dashboard.build_dashboard.get_gold_signal", return_value=fake_results[10]):
+
+        main()
+
+        ih_df = pd.read_csv("data/history/indicators_history.csv")
+        latest_row = ih_df.iloc[-1]
+
+        # Equity Breadth in latest row should equal forward-filled value instead of 0
+        assert latest_row["Equity Breadth"] > 0
 
 if __name__ == "__main__":
     test_logic()
