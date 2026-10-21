@@ -85,15 +85,27 @@ def main():
 
     # Append to indicators history
     ind_history_file = "data/history/indicators_history.csv"
+    existing_ih_df = pd.read_csv(ind_history_file) if os.path.exists(ind_history_file) else None
+
     ind_entry_data = {"Date": today_str}
     for res in indicator_results:
-        ind_entry_data[res['indicator']] = res.get('value', 0)
+        ind_name = res['indicator']
+        val = res.get('value')
+        is_invalid = (
+            val is None
+            or pd.isna(val)
+            or (val == 0 and res.get('explanation') in ["No data", "Data unavailable", "No valid data"])
+            or "Error" in str(res.get('explanation', ''))
+        )
+        if is_invalid and existing_ih_df is not None and not existing_ih_df.empty and ind_name in existing_ih_df.columns:
+            prev_valid = existing_ih_df[ind_name].dropna()
+            val = prev_valid.iloc[-1] if not prev_valid.empty else 0
+        ind_entry_data[ind_name] = val if val is not None else 0
 
     ind_entry = pd.DataFrame([ind_entry_data])
-    if os.path.exists(ind_history_file):
+    if existing_ih_df is not None:
         try:
-            ih_df = pd.read_csv(ind_history_file)
-            ih_df = pd.concat([ih_df, ind_entry], ignore_index=True).drop_duplicates(subset=['Date'], keep='last')
+            ih_df = pd.concat([existing_ih_df, ind_entry], ignore_index=True).drop_duplicates(subset=['Date'], keep='last')
             ih_df.to_csv(ind_history_file, index=False)
         except:
             ind_entry.to_csv(ind_history_file, index=False)
@@ -122,8 +134,12 @@ def main():
     for res in indicator_results:
         ind_name = res['indicator']
         filename = f"{ind_name.lower().replace(' ', '_')}_history.png"
+
+        # Prepare series and ffill any missing values so line chart remains continuous
+        series = ih_df[ind_name].ffill()
+
         plt.figure(figsize=(10, 4))
-        plt.plot(ih_df['Date'], ih_df[ind_name], marker='o', linestyle='-', color='#2188ff')
+        plt.plot(ih_df['Date'], series, marker='o', linestyle='-', color='#2188ff')
         plt.title(f"{ind_name} Trend")
         plt.grid(True, alpha=0.3)
         plt.xticks(rotation=45)

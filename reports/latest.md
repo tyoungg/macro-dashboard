@@ -1,22 +1,22 @@
-# Macro Dashboard - 2026-10-20
+# Macro Dashboard - 2026-10-21
 
-## Current Regime: PRE-STRESS ⚠️
+## Current Regime: TRANSITION 🟡
 
 ### Indicator Summary
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 5.09 | 🔴 Bearish | Rates up 49.0bps over 3m, tightening pressure | 2026-10-16 | FRED |
-| 10Y Term Premium | 1.073 | 🔴 Bearish | Elevated term premium (1.07%): investors demanding credibility compensation | 2026-10-09 | NY Fed ACM via FRED |
-| 2s10s Yield Curve | 0.38 | 🔴 Bearish | Bear steepening (Spread up, 10Y up) - credibility concerns | 2026-10-19 | FRED |
-| Fed Balance Sheet | 6755639.0 | 🟢 Bullish | Fed balance sheet expanding (+$9.1B over 4w) | 2026-10-14 | FRED |
-| Bank Reserves | 3022140.0 | 🟡 Neutral | Bank reserves stable ($+8.3B over 4w) | 2026-10-14 | FRED (WRESBAL) |
-| Treasury Auctions | 2.59 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.59, Tail 4.3bps | 2026-10-15 | Treasury Fiscal Data |
-| High Yield Credit Spread | 3.29 | 🔴 Bearish | HY spreads wide (329 bps) or widening rapidly (+63 bps) | 2026-10-19 | FRED (ICE BofA) |
-| Bank Stress | -0.45 | 🟡 Neutral | Banks performing in-line with S&P 500 (-0.5%) | 2026-10-20 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 7.4 | 🔴 Bearish | Mortgage rates up 82 bps over 3m, housing headwind | 2026-10-15 | FRED (Freddie Mac) |
-| Equity Breadth | 64.0 | 🟡 Neutral | Average participation: 64.0% of stocks above 200DMA | 2026-10-20 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4157.9 | 🔴 Bearish | Rising real rates (+0.13%) pressuring gold (-5.0%) | 2026-10-16 | Yahoo (Gold) / FRED (TIPS) |
+| 10Y Treasury Yield | 4.2 | 🟡 Neutral | Rates stable | 2026-10-21 | FRED |
+| 10Y Term Premium | 0.5 | 🟡 Neutral | Moderate | 2026-10-21 | FRED |
+| 2s10s Yield Curve | 0.3 | 🟡 Neutral | Curve | 2026-10-21 | FRED |
+| Fed Balance Sheet | 6500000 | 🟡 Neutral | Flat | 2026-10-21 | FRED |
+| Bank Reserves | 3000000 | 🟡 Neutral | Stable | 2026-10-21 | FRED |
+| Treasury Auctions | 2.5 | 🟡 Neutral | Stable | 2026-10-21 | Treasury |
+| High Yield Credit Spread | 3.0 | 🟡 Neutral | HY spreads | 2026-10-21 | FRED |
+| Bank Stress | 2.0 | 🟡 Neutral | In line | 2026-10-21 | Yahoo |
+| 30Y Mortgage Rate | 6.2 | 🟡 Neutral | Stable | 2026-10-21 | FRED |
+| Equity Breadth | 0 | 🟡 Neutral | No data | 2026-10-21 | S&P 500 |
+| Gold vs Real Rates | 4000 | 🟡 Neutral | Aligned | 2026-10-21 | Yahoo |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
