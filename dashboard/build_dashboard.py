@@ -83,7 +83,7 @@ def main():
     else:
         regime_entry.to_csv(regime_history_file, index=False)
 
-    # Append to indicators history
+    # Append to indicators history & mutate indicator_results with fallback values if missing
     ind_history_file = "data/history/indicators_history.csv"
     existing_ih_df = pd.read_csv(ind_history_file) if os.path.exists(ind_history_file) else None
 
@@ -99,7 +99,11 @@ def main():
         )
         if is_invalid and existing_ih_df is not None and not existing_ih_df.empty and ind_name in existing_ih_df.columns:
             prev_valid = existing_ih_df[ind_name].dropna()
-            val = prev_valid.iloc[-1] if not prev_valid.empty else None
+            if ind_name != "2s10s Yield Curve":
+                prev_valid = prev_valid[prev_valid != 0]
+            if not prev_valid.empty:
+                val = float(prev_valid.iloc[-1])
+                res['value'] = val
         ind_entry_data[ind_name] = val
 
     ind_entry = pd.DataFrame([ind_entry_data])

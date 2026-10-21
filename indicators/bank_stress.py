@@ -1,6 +1,7 @@
 import pandas as pd
 import yfinance as yf
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 def get_bank_stress():
     end = datetime.today()
@@ -11,7 +12,17 @@ def get_bank_stress():
         spy = yf.download("SPY", start=start, end=end, progress=False)
 
         if kre.empty or spy.empty:
-            return {"indicator": "Bank Stress", "signal": "Neutral", "explanation": "No data", "value": 0}
+            val, date_str = get_last_known_history("Bank Stress")
+            if val is not None:
+                return {
+                    "indicator": "Bank Stress",
+                    "value": round(val, 2),
+                    "signal": "Neutral",
+                    "explanation": f"Latest cached relative perf: {val:+.1f}%",
+                    "last_updated": date_str,
+                    "source": f"Yahoo Finance (Cached: {date_str})"
+                }
+            return {"indicator": "Bank Stress", "signal": "Neutral", "explanation": "No data", "value": None}
 
         # 1-month relative performance (approx 21 trading days)
         idx = -21 if len(kre) >= 21 else 0
@@ -51,7 +62,17 @@ def get_bank_stress():
             "source": "Yahoo Finance (KRE vs SPY)"
         }
     except Exception as e:
-        return {"indicator": "Bank Stress", "signal": "Neutral", "explanation": f"Error: {e}", "value": 0}
+        val, date_str = get_last_known_history("Bank Stress")
+        if val is not None:
+            return {
+                "indicator": "Bank Stress",
+                "value": round(val, 2),
+                "signal": "Neutral",
+                "explanation": f"Latest cached relative perf: {val:+.1f}%",
+                "last_updated": date_str,
+                "source": f"Yahoo Finance (Cached: {date_str})"
+            }
+        return {"indicator": "Bank Stress", "signal": "Neutral", "explanation": f"Error: {e}", "value": None}
 
 if __name__ == "__main__":
     import json

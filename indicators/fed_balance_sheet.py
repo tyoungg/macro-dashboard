@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from io import StringIO
 from datetime import datetime, timedelta
+from indicators.utils import get_last_known_history
 
 def fetch_fred_data(series_id, days):
     end = datetime.today()
@@ -23,6 +24,17 @@ def fetch_fred_data(series_id, days):
 def get_fed_balance_sheet():
     df = fetch_fred_data("WALCL", 60)
     if df.empty:
+        val, date_str = get_last_known_history("Fed Balance Sheet")
+        if val is not None:
+            return {
+                "indicator": "Fed Balance Sheet",
+                "value": round(val, 0),
+                "weekly_change": 0.0,
+                "signal": "Neutral",
+                "explanation": f"Latest cached value: ${val/1000000:.2f}T",
+                "last_updated": date_str,
+                "source": f"FRED (Cached: {date_str})"
+            }
         return {"indicator": "Fed Balance Sheet", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0])

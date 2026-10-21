@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime
 import time
+from indicators.utils import get_last_known_history
 
 def get_treasury_auctions():
     # Fetch the 5 most recent finalized nominal auctions (Notes, Bonds, and Bills)
@@ -17,11 +18,31 @@ def get_treasury_auctions():
     try:
         response = requests.get(url)
         if response.status_code != 200:
-            return {"indicator": "Treasury Auctions", "signal": "Neutral", "explanation": f"API Error: {response.status_code}", "value": 0}
+            val, date_str = get_last_known_history("Treasury Auctions")
+            if val is not None:
+                return {
+                    "indicator": "Treasury Auctions",
+                    "value": round(val, 2),
+                    "signal": "Neutral",
+                    "explanation": f"Latest cached BTC: {val:.2f}",
+                    "last_updated": date_str,
+                    "source": f"Treasury Fiscal Data (Cached: {date_str})"
+                }
+            return {"indicator": "Treasury Auctions", "signal": "Neutral", "explanation": f"API Error: {response.status_code}", "value": None}
 
         data = response.json().get('data', [])
         if not data:
-            return {"indicator": "Treasury Auctions", "signal": "Neutral", "explanation": "No data returned from API", "value": 0}
+            val, date_str = get_last_known_history("Treasury Auctions")
+            if val is not None:
+                return {
+                    "indicator": "Treasury Auctions",
+                    "value": round(val, 2),
+                    "signal": "Neutral",
+                    "explanation": f"Latest cached BTC: {val:.2f}",
+                    "last_updated": date_str,
+                    "source": f"Treasury Fiscal Data (Cached: {date_str})"
+                }
+            return {"indicator": "Treasury Auctions", "signal": "Neutral", "explanation": "No data returned from API", "value": None}
 
         total_btc = 0
         total_tail = 0
@@ -53,7 +74,17 @@ def get_treasury_auctions():
                 continue
 
         if valid_auctions == 0:
-            return {"indicator": "Treasury Auctions", "signal": "Neutral", "explanation": "Could not process auction data", "value": 0}
+            val, date_str = get_last_known_history("Treasury Auctions")
+            if val is not None:
+                return {
+                    "indicator": "Treasury Auctions",
+                    "value": round(val, 2),
+                    "signal": "Neutral",
+                    "explanation": f"Latest cached BTC: {val:.2f}",
+                    "last_updated": date_str,
+                    "source": f"Treasury Fiscal Data (Cached: {date_str})"
+                }
+            return {"indicator": "Treasury Auctions", "signal": "Neutral", "explanation": "Could not process auction data", "value": None}
 
         avg_btc = total_btc / valid_auctions
         avg_tail = total_tail / valid_auctions
@@ -79,11 +110,21 @@ def get_treasury_auctions():
         }
 
     except Exception as e:
+        val, date_str = get_last_known_history("Treasury Auctions")
+        if val is not None:
+            return {
+                "indicator": "Treasury Auctions",
+                "value": round(val, 2),
+                "signal": "Neutral",
+                "explanation": f"Latest cached BTC: {val:.2f}",
+                "last_updated": date_str,
+                "source": f"Treasury Fiscal Data (Cached: {date_str})"
+            }
         return {
             "indicator": "Treasury Auctions",
             "signal": "Neutral",
             "explanation": f"Unexpected error: {str(e)}",
-            "value": 0
+            "value": None
         }
 
 if __name__ == "__main__":
