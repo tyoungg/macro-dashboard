@@ -23,7 +23,7 @@ def fetch_fred_data(series_id, days):
 def get_mortgage_30y():
     df = fetch_fred_data("MORTGAGE30US", 120)
     if df.empty:
-        return {"indicator": "30Y Mortgage Rate", "signal": "Neutral", "explanation": "No data", "value": 0}
+        return {"indicator": "30Y Mortgage Rate", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0])
     # 3 months is ~13 weeks

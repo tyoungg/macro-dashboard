@@ -29,7 +29,7 @@ def fetch_fred_data(series_id, days):
 def get_yield_10y():
     df = fetch_fred_data(SERIES_ID, LOOKBACK_DAYS)
     if df.empty:
-        return {"indicator": "10Y Treasury Yield", "signal": "Neutral", "explanation": "No data", "value": 0}
+        return {"indicator": "10Y Treasury Yield", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0])
     # 3 months change

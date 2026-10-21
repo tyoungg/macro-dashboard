@@ -25,7 +25,7 @@ def get_yield_curve():
     df_10y = fetch_fred_data("DGS10", 60)
 
     if df_2s10s.empty or df_10y.empty:
-        return {"indicator": "2s10s Yield Curve", "signal": "Neutral", "explanation": "No data", "value": 0}
+        return {"indicator": "2s10s Yield Curve", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_spread = float(df_2s10s.iloc[-1].iloc[0])
     prev_spread = float(df_2s10s.iloc[-21].iloc[0]) if len(df_2s10s) >= 21 else float(df_2s10s.iloc[0].iloc[0])

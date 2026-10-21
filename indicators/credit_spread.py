@@ -23,7 +23,7 @@ def fetch_fred_data(series_id, days):
 def get_credit_spread():
     df = fetch_fred_data("BAMLH0A0HYM2", 60)
     if df.empty:
-        return {"indicator": "High Yield Credit Spread", "signal": "Neutral", "explanation": "No data", "value": 0}
+        return {"indicator": "High Yield Credit Spread", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0])
     prev_val = float(df.iloc[-21].iloc[0]) if len(df) >= 21 else float(df.iloc[0].iloc[0])

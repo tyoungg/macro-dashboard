@@ -62,7 +62,7 @@ def test_fetch_fred_data_html_response(mocker=None):
         assert result["indicator"] == "10Y Treasury Yield"
         assert result["signal"] == "Neutral"
         assert result["explanation"] == "No data"
-        assert result["value"] == 0
+        assert result["value"] is None
 
 def test_history_fallback_logic():
     import pandas as pd

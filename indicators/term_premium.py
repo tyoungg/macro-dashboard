@@ -36,7 +36,7 @@ def get_term_premium():
     if df.empty:
         return {
             "indicator": "10Y Term Premium",
-            "value": 0.0,
+            "value": None,
             "weekly_change": 0.0,
             "signal": "Neutral",
             "explanation": "Data unavailable",

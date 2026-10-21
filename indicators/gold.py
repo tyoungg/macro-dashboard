@@ -45,7 +45,7 @@ def get_gold_signal():
         if gold.empty or real_yield.empty:
             return {
                 "indicator": "Gold vs Real Rates",
-                "value": 0,
+                "value": None,
                 "signal": "Neutral",
                 "explanation": "Data unavailable",
                 "last_updated": end.strftime("%Y-%m-%d"),
@@ -90,7 +90,7 @@ def get_gold_signal():
     except Exception as e:
         return {
             "indicator": "Gold vs Real Rates",
-            "value": 0,
+            "value": None,
             "signal": "Neutral",
             "explanation": f"Error: {e}",
             "last_updated": end.strftime("%Y-%m-%d"),

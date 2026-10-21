@@ -24,7 +24,7 @@ def get_bank_reserves():
     # Using WRESBAL for weekly reserve balances
     df = fetch_fred_data("WRESBAL", 60)
     if df.empty:
-        return {"indicator": "Bank Reserves", "signal": "Neutral", "explanation": "No data", "value": 0}
+        return {"indicator": "Bank Reserves", "signal": "Neutral", "explanation": "No data", "value": None}
 
     current_val = float(df.iloc[-1].iloc[0]) # Millions
     prev_val = float(df.iloc[-5].iloc[0]) if len(df) >= 5 else float(df.iloc[0].iloc[0])
