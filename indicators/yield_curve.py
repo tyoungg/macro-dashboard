@@ -7,11 +7,17 @@ def fetch_fred_data(series_id, days):
     end = datetime.today()
     start = end - timedelta(days=days)
     url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}&cosd={start.strftime('%Y-%m-%d')}&coed={end.strftime('%Y-%m-%d')}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        df = pd.read_csv(StringIO(response.text), index_col=0, parse_dates=True)
-        df = df.apply(pd.to_numeric, errors='coerce').dropna()
-        return df
+    try:
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            text = response.text
+            if text.lstrip().startswith("<") or "<html" in text[:200].lower():
+                return pd.DataFrame()
+            df = pd.read_csv(StringIO(text), index_col=0, parse_dates=True)
+            df = df.apply(pd.to_numeric, errors='coerce').dropna()
+            return df
+    except Exception:
+        pass
     return pd.DataFrame()
 
 def get_yield_curve():
