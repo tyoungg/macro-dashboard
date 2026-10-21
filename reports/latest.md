@@ -6,17 +6,17 @@
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 0 | 🟡 Neutral | No data | N/A | N/A |
-| 10Y Term Premium | 0.0 | 🟡 Neutral | Data unavailable | 2026-10-21 | FRED |
-| 2s10s Yield Curve | 0 | 🟡 Neutral | No data | N/A | N/A |
-| Fed Balance Sheet | 0 | 🟡 Neutral | No data | N/A | N/A |
-| Bank Reserves | 0 | 🟡 Neutral | No data | N/A | N/A |
+| 10Y Treasury Yield | 5.09 | 🟡 Neutral | Latest cached value: 5.09% | 2026-10-20 | FRED (Cached: 2026-10-20) |
+| 10Y Term Premium | 1.073 | 🟡 Neutral | Latest cached value: 1.07% | 2026-10-20 | NY Fed ACM via FRED (Cached: 2026-10-20) |
+| 2s10s Yield Curve | 0.0 | 🟡 Neutral | Latest cached value: 0.00% | 2026-10-21 | FRED (Cached: 2026-10-21) |
+| Fed Balance Sheet | 6755639.0 | 🟡 Neutral | Latest cached value: $6.76T | 2026-10-20 | FRED (Cached: 2026-10-20) |
+| Bank Reserves | 3022140.0 | 🟡 Neutral | Latest cached value: $3022.1B | 2026-10-20 | FRED WRESBAL (Cached: 2026-10-20) |
 | Treasury Auctions | 2.59 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.59, Tail 4.3bps | 2026-10-15 | Treasury Fiscal Data |
-| High Yield Credit Spread | 0 | 🟡 Neutral | No data | N/A | N/A |
-| Bank Stress | -0.38 | 🟡 Neutral | Banks performing in-line with S&P 500 (-0.4%) | 2026-10-21 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 0 | 🟡 Neutral | No data | N/A | N/A |
+| High Yield Credit Spread | 3.29 | 🟡 Neutral | Latest cached value: 329 bps | 2026-10-20 | FRED ICE BofA (Cached: 2026-10-20) |
+| Bank Stress | -0.39 | 🟡 Neutral | Banks performing in-line with S&P 500 (-0.4%) | 2026-10-21 | Yahoo Finance (KRE vs SPY) |
+| 30Y Mortgage Rate | 7.4 | 🟡 Neutral | Latest cached value: 7.40% | 2026-10-20 | FRED Freddie Mac (Cached: 2026-10-20) |
 | Equity Breadth | 60.0 | 🟡 Neutral | Average participation: 60.0% of stocks above 200DMA | 2026-10-21 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 0 | 🟡 Neutral | Data unavailable | 2026-10-21 | Yahoo/FRED |
+| Gold vs Real Rates | 4157.9 | 🟡 Neutral | Latest cached value: $4157.90 | 2026-10-20 | Yahoo/FRED (Cached: 2026-10-20) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
