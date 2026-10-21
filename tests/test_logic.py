@@ -44,5 +44,25 @@ def test_logic():
 
     print("All logic tests passed!")
 
+def test_fetch_fred_data_html_response(mocker=None):
+    from unittest.mock import patch, MagicMock
+    import pandas as pd
+    from indicators.yield_10y import fetch_fred_data, get_yield_10y
+
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.text = "<!doctype html><html><body>We'll be back soon!</body></html>"
+
+    with patch("requests.get", return_value=mock_response):
+        df = fetch_fred_data("DGS10", 120)
+        assert isinstance(df, pd.DataFrame)
+        assert df.empty
+
+        result = get_yield_10y()
+        assert result["indicator"] == "10Y Treasury Yield"
+        assert result["signal"] == "Neutral"
+        assert result["explanation"] == "No data"
+        assert result["value"] == 0
+
 if __name__ == "__main__":
     test_logic()
