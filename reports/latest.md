@@ -1,22 +1,22 @@
-# Macro Dashboard - 2026-10-21
+# Macro Dashboard - 2026-10-22
 
-## Current Regime: TRANSITION 🟡
+## Current Regime: PRE-STRESS ⚠️
 
 ### Indicator Summary
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 5.09 | 🟡 Neutral | Latest cached value: 5.09% | 2026-10-20 | FRED (Cached: 2026-10-20) |
-| 10Y Term Premium | 1.073 | 🟡 Neutral | Latest cached value: 1.07% | 2026-10-20 | NY Fed ACM via FRED (Cached: 2026-10-20) |
-| 2s10s Yield Curve | 0.0 | 🟡 Neutral | Latest cached value: 0.00% | 2026-10-21 | FRED (Cached: 2026-10-21) |
-| Fed Balance Sheet | 6755639.0 | 🟡 Neutral | Latest cached value: $6.76T | 2026-10-20 | FRED (Cached: 2026-10-20) |
-| Bank Reserves | 3022140.0 | 🟡 Neutral | Latest cached value: $3022.1B | 2026-10-20 | FRED WRESBAL (Cached: 2026-10-20) |
+| 10Y Treasury Yield | 5.12 | 🔴 Bearish | Rates up 45.0bps over 3m, tightening pressure | 2026-10-20 | FRED |
+| 10Y Term Premium | 0.986 | 🔴 Bearish | Elevated term premium (0.99%): investors demanding credibility compensation | 2026-10-16 | NY Fed ACM via FRED |
+| 2s10s Yield Curve | 0.32 | 🔴 Bearish | Bear steepening (Spread up, 10Y up) - credibility concerns | 2026-10-21 | FRED |
+| Fed Balance Sheet | 6755639.0 | 🟢 Bullish | Fed balance sheet expanding (+$9.1B over 4w) | 2026-10-14 | FRED |
+| Bank Reserves | 3022140.0 | 🟡 Neutral | Bank reserves stable ($+8.3B over 4w) | 2026-10-14 | FRED (WRESBAL) |
 | Treasury Auctions | 2.59 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.59, Tail 4.3bps | 2026-10-15 | Treasury Fiscal Data |
-| High Yield Credit Spread | 3.29 | 🟡 Neutral | Latest cached value: 329 bps | 2026-10-20 | FRED ICE BofA (Cached: 2026-10-20) |
-| Bank Stress | -0.39 | 🟡 Neutral | Banks performing in-line with S&P 500 (-0.4%) | 2026-10-21 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 7.4 | 🟡 Neutral | Latest cached value: 7.40% | 2026-10-20 | FRED Freddie Mac (Cached: 2026-10-20) |
-| Equity Breadth | 60.0 | 🟡 Neutral | Average participation: 60.0% of stocks above 200DMA | 2026-10-21 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 4157.9 | 🟡 Neutral | Latest cached value: $4157.90 | 2026-10-20 | Yahoo/FRED (Cached: 2026-10-20) |
+| High Yield Credit Spread | 3.27 | 🔴 Bearish | HY spreads wide (327 bps) or widening rapidly (+54 bps) | 2026-10-21 | FRED (ICE BofA) |
+| Bank Stress | 1.81 | 🟢 Bullish | Banks outperforming S&P 500 by 1.8% | 2026-10-22 | Yahoo Finance (KRE vs SPY) |
+| 30Y Mortgage Rate | 7.4 | 🔴 Bearish | Mortgage rates up 82 bps over 3m, housing headwind | 2026-10-15 | FRED (Freddie Mac) |
+| Equity Breadth | 64.0 | 🟡 Neutral | Average participation: 64.0% of stocks above 200DMA | 2026-10-22 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 4069.1 | 🔴 Bearish | Rising real rates (+0.15%) pressuring gold (-5.3%) | 2026-10-20 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
