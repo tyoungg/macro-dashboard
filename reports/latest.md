@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-11-11
+# Macro Dashboard - 2026-11-12
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -12,11 +12,11 @@
 | Fed Balance Sheet | 6748145.0 | 🟢 Bullish | Fed balance sheet expanding (+$0.6B over 4w) | 2026-11-04 | FRED |
 | Bank Reserves | 2930088.0 | 🔴 Bearish | Bank reserves down $99.6B over 4w, liquidity tightening | 2026-11-04 | FRED (WRESBAL) |
 | Treasury Auctions | 2.59 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.59, Tail 4.3bps | 2026-10-15 | Treasury Fiscal Data |
-| High Yield Credit Spread | 3.34 | 🟡 Neutral | HY spreads at 334 bps, stable | 2026-11-09 | FRED (ICE BofA) |
-| Bank Stress | 7.23 | 🟢 Bullish | Banks outperforming S&P 500 by 7.2% | 2026-11-11 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 7.18 | 🔴 Bearish | Mortgage rates up 51 bps over 3m, housing headwind | 2026-11-05 | FRED (Freddie Mac) |
-| Equity Breadth | 76.0 | 🟢 Bullish | Broad participation: 76.0% of stocks above 200DMA | 2026-11-11 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 3998.3 | 🟡 Neutral | Gold (-2.7%) aligned with real rates (-0.25%) | 2026-11-09 | Yahoo (Gold) / FRED (TIPS) |
+| High Yield Credit Spread | 3.3 | 🟡 Neutral | HY spreads at 330 bps, stable | 2026-11-11 | FRED (ICE BofA) |
+| Bank Stress | 5.36 | 🟢 Bullish | Banks outperforming S&P 500 by 5.4% | 2026-11-12 | Yahoo Finance (KRE vs SPY) |
+| 30Y Mortgage Rate | 7.11 | 🔴 Bearish | Mortgage rates up 46 bps over 3m, housing headwind | 2026-11-12 | FRED (Freddie Mac) |
+| Equity Breadth | 72.0 | 🟢 Bullish | Broad participation: 72.0% of stocks above 200DMA | 2026-11-12 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 3885.9 | 🟡 Neutral | Gold (-6.8%) aligned with real rates (-0.25%) | 2026-11-09 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
