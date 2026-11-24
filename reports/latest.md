@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-11-23
+# Macro Dashboard - 2026-11-24
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -7,16 +7,16 @@
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
 | 10Y Treasury Yield | 4.92 | 🟡 Neutral | Rates stable (+18.0bps over 3m) | 2026-11-20 | FRED |
-| 10Y Term Premium | 0.986 | 🔴 Bearish | Elevated term premium (0.99%): investors demanding credibility compensation | 2026-11-13 | NY Fed ACM via FRED |
+| 10Y Term Premium | 0.889 | 🔴 Bearish | Elevated term premium (0.89%): investors demanding credibility compensation | 2026-11-20 | NY Fed ACM via FRED |
 | 2s10s Yield Curve | 0.29 | 🟡 Neutral | Curve at 0.29%, mixed or flattening signal | 2026-11-23 | FRED |
 | Fed Balance Sheet | 6741452.0 | 🔴 Bearish | Fed balance sheet contracting (-$12.2B over 4w) | 2026-11-18 | FRED |
 | Bank Reserves | 2979656.0 | 🟡 Neutral | Bank reserves stable ($+17.0B over 4w) | 2026-11-18 | FRED (WRESBAL) |
 | Treasury Auctions | 2.59 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.59, Tail 4.3bps | 2026-10-15 | Treasury Fiscal Data |
-| High Yield Credit Spread | 3.76 | 🟡 Neutral | HY spreads at 376 bps, stable | 2026-11-20 | FRED (ICE BofA) |
-| Bank Stress | 1.24 | 🟢 Bullish | Banks outperforming S&P 500 by 1.2% | 2026-11-23 | Yahoo Finance (KRE vs SPY) |
+| High Yield Credit Spread | 3.63 | 🟡 Neutral | HY spreads at 363 bps, stable | 2026-11-23 | FRED (ICE BofA) |
+| Bank Stress | 2.81 | 🟢 Bullish | Banks outperforming S&P 500 by 2.8% | 2026-11-24 | Yahoo Finance (KRE vs SPY) |
 | 30Y Mortgage Rate | 7.28 | 🔴 Bearish | Mortgage rates up 62 bps over 3m, housing headwind | 2026-11-19 | FRED (Freddie Mac) |
-| Equity Breadth | 68.0 | 🟢 Bullish | Broad participation: 68.0% of stocks above 200DMA | 2026-11-23 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 3634.4 | 🔴 Bearish | Rising real rates (+0.13%) pressuring gold (-10.0%) | 2026-11-20 | Yahoo (Gold) / FRED (TIPS) |
+| Equity Breadth | 60.0 | 🟡 Neutral | Average participation: 60.0% of stocks above 200DMA | 2026-11-24 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 3546.9 | 🔴 Bearish | Rising real rates (+0.13%) pressuring gold (-13.0%) | 2026-11-20 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
