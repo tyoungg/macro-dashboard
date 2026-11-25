@@ -1,4 +1,4 @@
-# Macro Dashboard - 2026-11-24
+# Macro Dashboard - 2026-11-25
 
 ## Current Regime: PRE-STRESS ⚠️
 
@@ -6,17 +6,17 @@
 
 | Indicator | Value | Signal | Explanation | Data Date | Source |
 |-----------|-------|--------|-------------|-----------|--------|
-| 10Y Treasury Yield | 4.92 | 🟡 Neutral | Rates stable (+18.0bps over 3m) | 2026-11-20 | FRED |
+| 10Y Treasury Yield | 4.92 | 🟡 Neutral | Rates stable (+22.0bps over 3m) | 2026-11-23 | FRED |
 | 10Y Term Premium | 0.889 | 🔴 Bearish | Elevated term premium (0.89%): investors demanding credibility compensation | 2026-11-20 | NY Fed ACM via FRED |
-| 2s10s Yield Curve | 0.29 | 🟡 Neutral | Curve at 0.29%, mixed or flattening signal | 2026-11-23 | FRED |
+| 2s10s Yield Curve | 0.28 | 🟡 Neutral | Curve at 0.28%, mixed or flattening signal | 2026-11-24 | FRED |
 | Fed Balance Sheet | 6741452.0 | 🔴 Bearish | Fed balance sheet contracting (-$12.2B over 4w) | 2026-11-18 | FRED |
 | Bank Reserves | 2979656.0 | 🟡 Neutral | Bank reserves stable ($+17.0B over 4w) | 2026-11-18 | FRED (WRESBAL) |
 | Treasury Auctions | 2.59 | 🔴 Bearish | Weak demand (Avg of 5): BTC 2.59, Tail 4.3bps | 2026-10-15 | Treasury Fiscal Data |
-| High Yield Credit Spread | 3.63 | 🟡 Neutral | HY spreads at 363 bps, stable | 2026-11-23 | FRED (ICE BofA) |
-| Bank Stress | 2.81 | 🟢 Bullish | Banks outperforming S&P 500 by 2.8% | 2026-11-24 | Yahoo Finance (KRE vs SPY) |
-| 30Y Mortgage Rate | 7.28 | 🔴 Bearish | Mortgage rates up 62 bps over 3m, housing headwind | 2026-11-19 | FRED (Freddie Mac) |
-| Equity Breadth | 60.0 | 🟡 Neutral | Average participation: 60.0% of stocks above 200DMA | 2026-11-24 | S&P 500 (Scraped via Wikipedia/Yahoo) |
-| Gold vs Real Rates | 3546.9 | 🔴 Bearish | Rising real rates (+0.13%) pressuring gold (-13.0%) | 2026-11-20 | Yahoo (Gold) / FRED (TIPS) |
+| High Yield Credit Spread | 3.72 | 🔴 Bearish | HY spreads wide (372 bps) or widening rapidly (+54 bps) | 2026-11-24 | FRED (ICE BofA) |
+| Bank Stress | 4.12 | 🟢 Bullish | Banks outperforming S&P 500 by 4.1% | 2026-11-25 | Yahoo Finance (KRE vs SPY) |
+| 30Y Mortgage Rate | 7.21 | 🔴 Bearish | Mortgage rates up 50 bps over 3m, housing headwind | 2026-11-25 | FRED (Freddie Mac) |
+| Equity Breadth | 60.0 | 🟡 Neutral | Average participation: 60.0% of stocks above 200DMA | 2026-11-25 | S&P 500 (Scraped via Wikipedia/Yahoo) |
+| Gold vs Real Rates | 3589.7 | 🔴 Bearish | Rising real rates (+0.13%) pressuring gold (-11.4%) | 2026-11-23 | Yahoo (Gold) / FRED (TIPS) |
 
 ![Signal Distribution](../charts/signal_distribution.png)
 
